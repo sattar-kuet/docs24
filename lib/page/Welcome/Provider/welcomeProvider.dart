@@ -31,63 +31,13 @@ class WelcomeProvider extends ChangeNotifier {
         url: 'session/check',
         isEmpty: true,
       );
-      final body = json.decode(response.body)['result'];
+      final sessionResponse = json.decode(response.body)['result'];
 
-      if (body['status'] == true) {
-        dynamic profileStatus = await AccountStatus.userStateCheckAction();
-        if (profileStatus['is_business_account'] == false) {
-          if (profileStatus['is_complete']) {
-            Future.delayed(
-              const Duration(seconds: 0),
-              () => Navigator.of(context).pushNamedAndRemoveUntil(
-                '/',
-                (route) => false,
-              ),
-            );
-          } else {
-            Future.delayed(
-              const Duration(seconds: 0),
-              () => Navigator.of(context).pushNamedAndRemoveUntil(
-                '/extendedProfile',
-                (route) => false,
-              ),
-            );
-          }
-        } else if (profileStatus['is_complete']) {
-          if (profileStatus['status'] == "approved") {
-            Future.delayed(
-              const Duration(seconds: 0),
-              () => Navigator.of(context).pushNamedAndRemoveUntil(
-                '/',
-                (route) => false,
-              ),
-            );
-          } else if (profileStatus['status'] == "email_verification_pending") {
-            Future.delayed(
-              const Duration(seconds: 0),
-              () => Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login',
-                (route) => false,
-              ),
-            );
-          } else {
-            Future.delayed(
-              const Duration(seconds: 0),
-              () => Navigator.of(context).pushNamedAndRemoveUntil(
-                '/message',
-                (route) => false,
-              ),
-            );
-          }
-        } else {
-          Future.delayed(
-            const Duration(seconds: 0),
-            () => Navigator.of(context).pushNamedAndRemoveUntil(
-              '/businessProfile',
-              (route) => false,
-            ),
-          );
-        }
+      if (sessionResponse['status'] == true) {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/emailLog',
+          (route) => false,
+        );
       } else {
         // ignore: use_build_context_synchronously
         Navigator.of(context).pushNamedAndRemoveUntil(

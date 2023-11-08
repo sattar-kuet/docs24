@@ -1,4 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:docs24/page/Auth/Login/LoginView.dart';
+import 'package:docs24/page/Auth/Login/newPasswordView.dart';
+import 'package:docs24/page/Auth/Register/email_verify_view.dart';
+import 'package:docs24/page/Auth/Register/register_view.dart';
+import 'package:docs24/page/BusinessProfile/businessProfileView.dart';
+import 'package:docs24/page/Employee/employeeListView.dart';
+import 'package:docs24/page/Employee/employeeView.dart';
+
+import 'package:docs24/page/Home/HomeView.dart';
+import 'package:docs24/page/Home/JobDetailView.dart';
+import 'package:docs24/page/Home/JobView.dart';
+import 'package:docs24/page/Home/jobApplyView.dart';
+import 'package:docs24/page/Welcome/WelcomeView.dart';
+import 'package:docs24/page/Welcome/messageView.dart';
+
+import '../page/Auth/Login/emailInputView.dart';
+import '../page/Auth/Register/profile_view.dart';
+import '../page/BusinessProfile/businessProfileEdit.dart';
+import '../page/BusinessProfile/extendedProfileEdit.dart';
+import '../page/BusinessProfile/extendedProfileView.dart';
+import '../page/Contact/contactListView.dart';
+import '../page/Contact/contactView.dart';
+import '../page/SendMail/sendMailView.dart';
+import '../utility/systemInfo.dart';
 
 void main() {
   runApp(const MyApp());

@@ -21,16 +21,10 @@ class WelcomeProvider extends ChangeNotifier {
       final sessionResponse = json.decode(response.body)['result'];
 
       if (sessionResponse['status'] == true) {
-        Navigator.of(context).pushNamedAndRemoveUntil(
-          '/emailLog',
-          (route) => false,
-        );
+        Navigator.of(context).pushReplacementNamed('/emailLog');
       } else {
         // ignore: use_build_context_synchronously
-        Navigator.of(context).pushNamedAndRemoveUntil(
-          '/login',
-          (route) => false,
-        );
+        Navigator.of(context).pushReplacementNamed('/login');
       }
     } else {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

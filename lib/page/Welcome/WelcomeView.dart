@@ -10,8 +10,9 @@ class WelcomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => WelcomeProvider()..dbNameAction(),
-      // ..loginStatusCheckAction(context),
+      create: (BuildContext context) => WelcomeProvider()
+        ..dbNameAction()
+        ..loginStatusCheckAction(context),
       child: Consumer<WelcomeProvider>(builder: (context, stateAction, _) {
         return const Scaffold(
           body: Center(

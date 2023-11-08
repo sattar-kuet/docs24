@@ -8,21 +8,8 @@ import 'package:docs24/utility/systemInfo.dart';
 
 class WelcomeProvider extends ChangeNotifier {
   void dbNameAction() {
-    // http.Response response =
-    //     await ApiRoot.request({}, url: 'db_name', isEmpty: true);
-    // final body = json.decode(response.body)['result'];
-    // if (body['status'] == true) {
-    // debugPrint("----- DB name get data -----");
     SystemInfo.setDBName('app_db');
-    // }
   }
-
-  // void loginStatusCheckAction(BuildContext context) async {
-  //   Navigator.of(context).pushNamedAndRemoveUntil(
-  //     '/login',
-  //     (route) => false,
-  //   );
-  // }
 
   void loginStatusCheckAction(BuildContext context) async {
     if (SystemInfo.getToken != null) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:docs24/page/Welcome/Provider/welcomeProvider.dart';
 import 'package:provider/provider.dart';
 
-class WelcomeView extends StatelessWidget {
-  const WelcomeView({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {

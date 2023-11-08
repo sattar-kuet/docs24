@@ -22,12 +22,12 @@ class ItScholarbd extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => LoginProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => BusinessProfileProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => SendMailProvider(),
-        )
+        // ChangeNotifierProvider(
+        //   create: (context) => BusinessProfileProvider(),
+        // ),
+        // ChangeNotifierProvider(
+        //   create: (context) => SendMailProvider(),
+        // )
       ],
       child: Sizer(
         builder: (context, __, _) {

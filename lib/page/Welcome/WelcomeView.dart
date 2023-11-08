@@ -14,7 +14,7 @@ class WelcomeView extends StatelessWidget {
       child: Consumer<WelcomeProvider>(builder: (context, stateAction, _) {
         return const Scaffold(
           body: Center(
-            child: Logo(),
+            child: Text('Loading..'),
           ),
         );
       }),

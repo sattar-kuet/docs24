@@ -34,7 +34,7 @@ class ItScholarbd extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             routes: Routers.getPages,
-            initialRoute: '/',
+            initialRoute: '/emailLog',
           );
         },
       ),

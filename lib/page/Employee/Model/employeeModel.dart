@@ -30,14 +30,14 @@ class EmployeeModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['country_code'] = this.countryCode;
-    data['country_iso_code'] = this.countryISOCode;
-    data['position'] = this.position;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['country_code'] = countryCode;
+    data['country_iso_code'] = countryISOCode;
+    data['position'] = position;
     return data;
   }
 

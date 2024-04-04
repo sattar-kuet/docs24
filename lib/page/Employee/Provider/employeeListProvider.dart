@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:docs24/page/Employee/Model/employeeModel.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/page/Employee/Model/employeeModel.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class EmployeeListProvider extends ChangeNotifier {
   List<EmployeeModel> _employeeList = [];

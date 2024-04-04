@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:docs24/page/BusinessProfile/Model/categoryModel.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/page/BusinessProfile/Model/categoryModel.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class BusinessProfileProvider extends ChangeNotifier {
   TextEditingController name = TextEditingController();
@@ -19,7 +19,7 @@ class BusinessProfileProvider extends ChangeNotifier {
   String _countryName = "";
   String get countryName => _countryName;
 
-  bool _startTyping = false;
+  final bool _startTyping = false;
   bool get startTyping => _startTyping;
 
   String _stateName = "";

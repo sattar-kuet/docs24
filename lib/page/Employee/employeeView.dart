@@ -2,9 +2,9 @@ import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/Employee/Model/employeeModel.dart';
-import 'package:docs24/page/Employee/Provider/employeeProvider.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/Employee/Model/employeeModel.dart';
+import 'package:mailbox/page/Employee/Provider/employeeProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

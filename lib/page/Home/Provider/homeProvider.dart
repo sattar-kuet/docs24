@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:docs24/page/Home/Model/emailLog.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/page/Home/Model/emailLog.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class HomeProvider extends ChangeNotifier {
   List<EmailLogModel> _emailLog = [];

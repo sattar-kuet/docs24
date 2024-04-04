@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:docs24/page/Auth/Login/Provider/loginProvider.dart';
-import 'package:docs24/utility/APIRoot.dart';
+import 'package:mailbox/page/Auth/Login/Provider/loginProvider.dart';
+import 'package:mailbox/utility/APIRoot.dart';
 import 'package:provider/provider.dart';
 
 class EmailVerifyProvider extends ChangeNotifier {
@@ -40,11 +40,11 @@ class EmailVerifyProvider extends ChangeNotifier {
       print(data);
       final response = await ApiRoot.request(data, url: 'email/verify');
 
-      dynamic response_body = json.decode(response.body)['result'];
+      dynamic responseBody = json.decode(response.body)['result'];
 
-      if (response_body['status'] == true) {
+      if (responseBody['status'] == true) {
         Fluttertoast.showToast(
-          msg: response_body['message'],
+          msg: responseBody['message'],
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -68,7 +68,7 @@ class EmailVerifyProvider extends ChangeNotifier {
         }
       } else {
         Fluttertoast.showToast(
-          msg: response_body['error'],
+          msg: responseBody['error'],
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

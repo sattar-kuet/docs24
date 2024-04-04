@@ -4,10 +4,10 @@ import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/SendMail/Model/emailtamplateModel.dart';
-import 'package:docs24/page/SendMail/Provider/sendMailProvider.dart';
-import 'package:docs24/page/SendMail/Widgets/signaturePadWidget.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/SendMail/Model/emailtamplateModel.dart';
+import 'package:mailbox/page/SendMail/Provider/sendMailProvider.dart';
+import 'package:mailbox/page/SendMail/Widgets/signaturePadWidget.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../Contact/Model/contactModel.dart';
@@ -146,7 +146,7 @@ class _SendMailViewState extends State<SendMailView> {
                               elevation: 16,
                               isExpanded: true,
                               hint: const Text("Select Email Tamplate"),
-                              underline: SizedBox(),
+                              underline: const SizedBox(),
                               onChanged: (String? value) =>
                                   Provider.of<SendMailProvider>(context,
                                           listen: false)
@@ -220,7 +220,7 @@ class _SendMailViewState extends State<SendMailView> {
                                   .push(
                                     MaterialPageRoute(
                                       fullscreenDialog: true,
-                                      builder: (context) => SignaturePad(),
+                                      builder: (context) => const SignaturePad(),
                                     ),
                                   )
                                   .then((value) => setState(() {

@@ -20,12 +20,12 @@ class ExtendedProfileModel {
   get businessName => null;
   // JSON serialization (toJson) method
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['country'] = this.country;
-    data['city'] = this.city;
-    data['business_address'] = this.address;
-    data['logo'] = this.logo;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['country'] = country;
+    data['city'] = city;
+    data['business_address'] = address;
+    data['logo'] = logo;
     return data;
   }
 }

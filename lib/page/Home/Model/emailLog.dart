@@ -17,11 +17,11 @@ class EmailLogModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['subject'] = this.subject;
-    data['receiver_email'] = this.receiverEmail;
-    data['time'] = this.time;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['subject'] = subject;
+    data['receiver_email'] = receiverEmail;
+    data['time'] = time;
     return data;
   }
 

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import '../utility/APIRoot.dart';
-import '../utility/systemInfo.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class AccountStatus {
   static Future<dynamic> userStateCheckAction() async {

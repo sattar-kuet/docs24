@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 import '../Model/job.dart';
 
@@ -39,7 +39,7 @@ class JobProvider extends ChangeNotifier {
       {
         "uid": SystemInfo.getUid,
       },
-      url: "job/detail/${jobId}",
+      url: "job/detail/$jobId",
     );
     print(response.body);
     final body = json.decode(response.body)['result'];

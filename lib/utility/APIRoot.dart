@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'config.dart';
-import 'systemInfo.dart';
+import 'package:mailbox/utility/config.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class ApiRoot {
   static Future<http.Response> request(data,

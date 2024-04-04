@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:docs24/repository/account_status.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/repository/account_status.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class LoginProvider extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();

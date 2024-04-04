@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../page/Auth/Login/LoginView.dart';
-import '../page/Auth/Login/newPasswordView.dart';
-import '../page/Auth/Register/email_verify_view.dart';
-import '../page/Auth/Register/register_view.dart';
-import '../page/BusinessProfile/businessProfileView.dart';
-import '../page/Employee/employeeListView.dart';
-import '../page/Employee/employeeView.dart';
+import 'package:mailbox/page/Auth/Login/LoginView.dart';
+import 'package:mailbox/page/Auth/Login/newPasswordView.dart';
+import 'package:mailbox/page/Auth/Register/email_verify_view.dart';
+import 'package:mailbox/page/Auth/Register/register_view.dart';
+import 'package:mailbox/page/BusinessProfile/businessProfileView.dart';
+import 'package:mailbox/page/Employee/employeeListView.dart';
+import 'package:mailbox/page/Employee/employeeView.dart';
 
-import '../page/Home/HomeView.dart';
-import '../page/Home/JobDetailView.dart';
-import '../page/Home/JobView.dart';
-import '../page/Home/jobApplyView.dart';
-import '../page/Welcome/WelcomeView.dart';
-import '../page/Welcome/messageView.dart';
+import 'package:mailbox/page/Home/HomeView.dart';
+import 'package:mailbox/page/Home/JobDetailView.dart';
+import 'package:mailbox/page/Home/JobView.dart';
+import 'package:mailbox/page/Home/jobApplyView.dart';
+import 'package:mailbox/page/Welcome/WelcomeView.dart';
+import 'package:mailbox/page/Welcome/messageView.dart';
 
 import '../page/Auth/Login/emailInputView.dart';
 import '../page/Auth/Register/profile_view.dart';
@@ -26,7 +26,16 @@ import '../utility/systemInfo.dart';
 
 class Routers {
   static Map<String, Widget Function(BuildContext)> getPages = {
-    "/": (_) => const LoginView(),
+    "/": (_) {
+      if (SystemInfo.getUid == null) {
+        return const WelcomeView();
+      } else if (SystemInfo.getIsBusinessProfile == false &&
+          SystemInfo.getIsOwner == true) {
+        return const JobView();
+      } else {
+        return const HomeView();
+      }
+    },
     '/emailLog': (_) => const HomeView(),
     '/welcome': (_) => const WelcomeView(),
     '/jobDetail': (_) => const JobDetailView(),

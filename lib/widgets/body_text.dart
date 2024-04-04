@@ -20,10 +20,10 @@ class BodyText extends StatelessWidget {
       text,
       textAlign: textAlign,
       overflow: TextOverflow.ellipsis,
-      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
           fontStyle: fontStyle ?? FontStyle.normal,
           fontSize: fontsize.sp,
-          color: color ?? Theme.of(context).textTheme.bodyText1!.color),
+          color: color ?? Theme.of(context).textTheme.bodyLarge!.color),
     );
   }
 }

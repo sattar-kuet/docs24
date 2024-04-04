@@ -33,15 +33,15 @@ class ContactModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['uid'] = this.uid;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['country_code'] = this.countryCode;
-    data['country_iso_code'] = this.countryISOCode;
-    data['company_name'] = this.companyName;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['uid'] = uid;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['country_code'] = countryCode;
+    data['country_iso_code'] = countryISOCode;
+    data['company_name'] = companyName;
     return data;
   }
 

@@ -4,8 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'dart:ui' as ui;

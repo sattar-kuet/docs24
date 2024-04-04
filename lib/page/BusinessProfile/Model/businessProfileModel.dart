@@ -1,4 +1,4 @@
-import 'package:docs24/page/BusinessProfile/Model/categoryModel.dart';
+import 'package:mailbox/page/BusinessProfile/Model/categoryModel.dart';
 
 class BusinessProfileModel {
   int? id;
@@ -50,21 +50,21 @@ class BusinessProfileModel {
 
   // JSON serialization (toJson) method
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['url'] = this.url;
-    data['abn'] = this.abn;
-    data['country'] = this.country;
-    data['city'] = this.city;
-    data['business_address'] = this.address;
-    data['category_ids'] = this.categoryIds;
-    data['logo'] = this.logo;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['url'] = url;
+    data['abn'] = abn;
+    data['country'] = country;
+    data['city'] = city;
+    data['business_address'] = address;
+    data['category_ids'] = categoryIds;
+    data['logo'] = logo;
 
     // Serialize the list of category objects
-    if (this.category != null) {
+    if (category != null) {
       data['category'] =
-          this.category!.map((category) => category.toJson()).toList();
+          category!.map((category) => category.toJson()).toList();
     }
     return data;
   }

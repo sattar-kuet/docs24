@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
 class InputBox extends StatefulWidget {
   const InputBox({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.helperText,
     required this.onChange,
@@ -14,7 +13,7 @@ class InputBox extends StatefulWidget {
     this.size = 12,
     this.isNumber = true,
     this.isPassword = false,
-  }) : super(key: key);
+  });
 
   final String hintText;
   final String helperText;

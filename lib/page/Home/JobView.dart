@@ -9,6 +9,7 @@ import 'components/MenuDrawer.dart';
 class JobView extends StatelessWidget {
   const JobView({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<JobProvider>.value(
       value: JobProvider()..getJobList(),
@@ -44,7 +45,7 @@ class JobView extends StatelessWidget {
                             ],
                           ),
                           trailing: TextButton(
-                            child: Text('View Details'),
+                            child: const Text('View Details'),
                             onPressed: () {
                               Navigator.of(context)
                                   .pushNamed('/jobDetail', arguments: job.id);

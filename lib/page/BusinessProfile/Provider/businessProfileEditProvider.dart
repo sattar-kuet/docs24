@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:docs24/page/BusinessProfile/Model/businessProfileModel.dart';
-import 'package:docs24/page/BusinessProfile/Model/categoryModel.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/page/BusinessProfile/Model/businessProfileModel.dart';
+import 'package:mailbox/page/BusinessProfile/Model/categoryModel.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class BusinessProfileEditProvider extends ChangeNotifier {
   TextEditingController name = TextEditingController();

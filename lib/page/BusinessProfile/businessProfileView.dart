@@ -1,13 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/BusinessProfile/Provider/businessProfileProvider.dart';
-import 'package:docs24/page/BusinessProfile/components/imagePicker.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/BusinessProfile/Provider/businessProfileProvider.dart';
+import 'package:mailbox/page/BusinessProfile/components/imagePicker.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';

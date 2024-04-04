@@ -33,15 +33,15 @@ class JobModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['vacancy'] = this.vacancy;
-    data['detail'] = this.detail;
-    data['location'] = this.location;
-    data['salary'] = this.salary;
-    data['deadline'] = this.deadline;
-    data['applied'] = this.applied;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['vacancy'] = vacancy;
+    data['detail'] = detail;
+    data['location'] = location;
+    data['salary'] = salary;
+    data['deadline'] = deadline;
+    data['applied'] = applied;
     return data;
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/Auth/Login/Provider/passwordRecoveryProvider.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/Auth/Login/Provider/passwordRecoveryProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

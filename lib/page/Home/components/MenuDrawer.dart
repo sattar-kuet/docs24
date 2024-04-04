@@ -8,7 +8,7 @@ import '../../../utility/systemInfo.dart';
 import '../../../widgets/draweritem.dart';
 
 class MenuDrawer extends StatelessWidget {
-  const MenuDrawer({Key? key}) : super(key: key);
+  const MenuDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

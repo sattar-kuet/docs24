@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:docs24/page/SendMail/Provider/sendMailProvider.dart';
+import 'package:mailbox/page/SendMail/Provider/sendMailProvider.dart';
 import 'package:sizer/sizer.dart';
 
 class SelectContactWidget extends StatelessWidget {

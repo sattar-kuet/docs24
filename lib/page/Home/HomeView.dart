@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/page/Home/Model/emailLog.dart';
-import 'package:docs24/page/Home/Provider/homeProvider.dart';
-import 'package:docs24/page/SendMail/sendMailView.dart';
+import 'package:mailbox/page/Home/Model/emailLog.dart';
+import 'package:mailbox/page/Home/Provider/homeProvider.dart';
+import 'package:mailbox/page/SendMail/sendMailView.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'components/MenuDrawer.dart';
@@ -10,6 +10,7 @@ import 'components/MenuDrawer.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeProvider>.value(
       value: HomeProvider()..getEmailLog(),

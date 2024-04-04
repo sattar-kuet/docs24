@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:docs24/page/SendMail/Model/contactListModel.dart';
-import 'package:docs24/page/SendMail/Model/emailListDetailsModel.dart';
-import 'package:docs24/page/SendMail/Model/emailtamplateModel.dart';
-import 'package:docs24/utility/APIRoot.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/page/SendMail/Model/contactListModel.dart';
+import 'package:mailbox/page/SendMail/Model/emailListDetailsModel.dart';
+import 'package:mailbox/page/SendMail/Model/emailtamplateModel.dart';
+import 'package:mailbox/utility/APIRoot.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 
 class SendMailProvider extends ChangeNotifier {
   List<EmailTamplateModel> _tamplateList = [];

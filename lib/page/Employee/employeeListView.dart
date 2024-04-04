@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/page/Employee/Model/employeeModel.dart';
-import 'package:docs24/page/Employee/Provider/employeeListProvider.dart';
-import 'package:docs24/page/Home/components/MenuDrawer.dart';
+import 'package:mailbox/page/Employee/Model/employeeModel.dart';
+import 'package:mailbox/page/Employee/Provider/employeeListProvider.dart';
+import 'package:mailbox/page/Home/components/MenuDrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

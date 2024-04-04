@@ -1,10 +1,9 @@
-import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/Contact/Model/contactModel.dart';
-import 'package:docs24/page/Contact/Provider/contactProvider.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/Contact/Model/contactModel.dart';
+import 'package:mailbox/page/Contact/Provider/contactProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

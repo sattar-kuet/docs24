@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/page/Contact/Model/contactModel.dart';
-import 'package:docs24/page/Contact/Provider/contactListProvider.dart';
+import 'package:mailbox/page/Contact/Model/contactModel.dart';
+import 'package:mailbox/page/Contact/Provider/contactListProvider.dart';
 
-import 'package:docs24/page/Home/components/MenuDrawer.dart';
+import 'package:mailbox/page/Home/components/MenuDrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

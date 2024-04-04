@@ -1,6 +1,6 @@
 {
-    "name": "docs24",
-    "short_name": "docs24",
+    "name": "mail_box",
+    "short_name": "mail_box",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

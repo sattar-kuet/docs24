@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:docs24/utility/APIRoot.dart';
+import 'package:mailbox/utility/APIRoot.dart';
 
 class RegisterProvider extends ChangeNotifier {
   TextEditingController name = TextEditingController();

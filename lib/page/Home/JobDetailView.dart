@@ -9,6 +9,7 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 class JobDetailView extends StatelessWidget {
   const JobDetailView({super.key});
 
+  @override
   Widget build(BuildContext context) {
     int jobID = 0;
     jobID = ModalRoute.of(context)?.settings.arguments as int;
@@ -28,7 +29,7 @@ class JobDetailView extends StatelessWidget {
               ),
               drawer: const MenuDrawer(),
               body: SafeArea(
-                minimum: EdgeInsets.all(16.0), // Adjust the padding as needed
+                minimum: const EdgeInsets.all(16.0), // Adjust the padding as needed
                 child: ListView(
                   children: [
                     Text(
@@ -39,55 +40,55 @@ class JobDetailView extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons
                                   .event_seat, // Use an appropriate icon for vacancy
                               size: 16.0,
                             ),
-                            SizedBox(width: 5.0),
+                            const SizedBox(width: 5.0),
                             Text(
                               '${job.vacancy ?? 0}',
-                              style: TextStyle(fontSize: 16.0),
+                              style: const TextStyle(fontSize: 16.0),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons
                                   .location_on, // Use an appropriate icon for location
                               size: 16.0,
                             ),
-                            SizedBox(width: 5.0),
+                            const SizedBox(width: 5.0),
                             Text(
-                              '${job.location ?? ''}',
-                              style: TextStyle(fontSize: 16.0),
+                              job.location ?? '',
+                              style: const TextStyle(fontSize: 16.0),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons
                                   .timer, // Use an appropriate icon for deadline
                               size: 16.0,
                             ),
-                            SizedBox(width: 5.0),
+                            const SizedBox(width: 5.0),
                             Text(
-                              '${job.deadline ?? ''}',
-                              style: TextStyle(fontSize: 16.0),
+                              job.deadline ?? '',
+                              style: const TextStyle(fontSize: 16.0),
                             ),
                           ],
                         ),
                       ],
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     HtmlWidget(job.detail ?? ''),
                   ],
                 ),
@@ -99,15 +100,15 @@ class JobDetailView extends StatelessWidget {
                     Navigator.of(context)
                         .pushNamed('/jobApply', arguments: jobID);
                   },
-                  child: Text(
-                    'Apply to this job',
-                    style: TextStyle(
-                      color: Colors.white, // Text color
-                    ),
-                  ),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                       Colors.blue, // Button background color
+                    ),
+                  ),
+                  child: const Text(
+                    'Apply to this job',
+                    style: TextStyle(
+                      color: Colors.white, // Text color
                     ),
                   ),
                 ),

@@ -22,14 +22,14 @@ class EmailDataModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['receiver_name'] = this.receiver_name;
-    data['receiver_email'] = this.receiver_email;
-    data['sender_date'] = this.sender_date;
-    data['project_name'] = this.project_name;
-    data['client_name'] = this.client_name;
-    data['project_address'] = this.project_address;
-    data['template_id'] = this.template_id;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['receiver_name'] = receiver_name;
+    data['receiver_email'] = receiver_email;
+    data['sender_date'] = sender_date;
+    data['project_name'] = project_name;
+    data['client_name'] = client_name;
+    data['project_address'] = project_address;
+    data['template_id'] = template_id;
     return data;
   }
 }

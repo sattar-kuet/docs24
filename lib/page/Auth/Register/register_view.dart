@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/page/Auth/Register/Provider/register_provider.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/page/Auth/Register/Provider/register_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';
@@ -10,7 +10,7 @@ import '../../../components/logo.dart';
 import '../../../utility/helper.dart';
 
 class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+  const RegisterView({super.key});
 
   @override
   _RegisterViewState createState() => _RegisterViewState();

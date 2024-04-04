@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:docs24/components/inputBox.dart';
-import 'package:docs24/utility/systemInfo.dart';
+import 'package:mailbox/components/inputBox.dart';
+import 'package:mailbox/utility/systemInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';

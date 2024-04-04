@@ -14,11 +14,11 @@ class EmailTamplateModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['code_name'] = this.codeName;
-    data['field_list'] = this.fieldList;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['code_name'] = codeName;
+    data['field_list'] = fieldList;
     return data;
   }
 }

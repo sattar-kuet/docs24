@@ -105,6 +105,18 @@ class LoginView extends StatelessWidget {
                                           password: stateAction
                                               .passwordController.value.text)
                                   : null,
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                      (Set<MaterialState> states) {
+                                    if (stateAction.isbtnEnabl) {
+                                      // Return the color when the button is disabled
+                                      return Colors.blue.shade200; // Change this to your desired color
+                                    }
+                                    // Return the color when the button is enabled
+                                    return Colors.grey.shade200; // Change this to your desired color
+                                  },
+                                ),
+                              ),
                               child: Text(
                                 "Login",
                                 style: Theme.of(context)

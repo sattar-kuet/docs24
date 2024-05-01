@@ -268,7 +268,7 @@ class _SendMailViewState extends State<SendMailView> {
                                       return Colors.blue.shade200; // Change this to your desired color
                                     }
                                     // Return the color when the button is enabled
-                                    return Colors.white; // Change this to your desired color
+                                    return Colors.grey.shade200; // Change this to your desired color
                                   },
                                 ),
                               ),

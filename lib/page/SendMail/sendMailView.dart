@@ -116,7 +116,7 @@ class _SendMailViewState extends State<SendMailView> {
                             ),
                             SizedBox(
                               width: double.infinity,
-                              height: 40.w,
+                              height: 41.w,
                               child: ListView.builder(
                                 itemCount:
                                     stateAction.selectedContactList.length,
@@ -260,6 +260,18 @@ class _SendMailViewState extends State<SendMailView> {
                                           listen: false)
                                       .sendMailAction(context)
                                   : null,
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                      (Set<MaterialState> states) {
+                                    if (stateAction.isbtnEnabl) {
+                                      // Return the color when the button is disabled
+                                      return Colors.blue.shade200; // Change this to your desired color
+                                    }
+                                    // Return the color when the button is enabled
+                                    return Colors.white; // Change this to your desired color
+                                  },
+                                ),
+                              ),
                               child: Text(
                                 "Send Mail",
                                 style: Theme.of(context)

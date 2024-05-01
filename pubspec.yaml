@@ -45,7 +45,7 @@ dependencies:
   otp_text_field: ^1.1.3
   image_picker: ^1.0.4
   multi_select_flutter: ^4.1.3
-  custom_searchable_dropdown: ^2.1.1
+  custom_searchable_dropdown:
   flutter_rounded_date_picker: ^3.0.3
   date_field: ^3.0.5
   syncfusion_flutter_signaturepad: ^23.1.44

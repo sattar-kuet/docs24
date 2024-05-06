@@ -4,6 +4,7 @@ import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mailbox/components/inputBox.dart';
 import 'package:mailbox/page/SendMail/Model/emailtamplateModel.dart';
@@ -206,25 +207,28 @@ class _SendMailViewState extends State<SendMailView> {
                               "quote") ...[
                             GestureDetector(
                               onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>QuoteInput()));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const QuoteInput()));
                               },
                               child: Container(
-                                width: 100,
-                                height: 100,
-                                color: Colors.red,
+                                height: 50,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: const Color.fromARGB(255, 224, 241, 255),
+                                  borderRadius: BorderRadius.circular(10.sp),
+                                ),
+                                child: const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('   Quote Details',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
                               ),
-                              // child: InputBox(
-                              //   controller: stateAction.projectAddress,
-                              //   helperText: '',
-                              //   hintText: 'Project Address new',
-                              //   onChange: (String value) {
-                              //     print("Hello");
-                              //   },
-                              // ),
                             ),
                           ],
-
-
+                          const Gap(10),
                           DateTimeFormField(
                             decoration: const InputDecoration(
                               fillColor: Color.fromARGB(255, 224, 241, 255),

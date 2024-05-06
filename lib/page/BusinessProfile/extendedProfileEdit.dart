@@ -145,6 +145,18 @@ class ExtendedProfileEdit extends StatelessWidget {
                                       context,
                                       listen: false)
                                   .personalProfileAction(context),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                  (Set<MaterialState> states) {
+                                if (stateAction.btnEnable) {
+                                  // Return the color when the button is disabled
+                                  return Colors.blue.shade200; // Change this to your desired color
+                                }
+                                // Return the color when the button is enabled
+                                return Colors.grey.shade200; // Change this to your desired color
+                              },
+                            ),
+                          ),
                           child: Text(
                             "Save",
                             style:

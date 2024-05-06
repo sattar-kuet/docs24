@@ -22,6 +22,7 @@ import '../page/BusinessProfile/extendedProfileView.dart';
 import '../page/Contact/contactListView.dart';
 import '../page/Contact/contactView.dart';
 import '../page/SendMail/sendMailView.dart';
+import '../page/quote/screens/quote_input.dart';
 import '../utility/systemInfo.dart';
 
 class Routers {
@@ -56,5 +57,6 @@ class Routers {
     '/employeeManage': (_) => const EmployeeView(),
     '/message': (_) => const MessageView(),
     '/sendMail': (_) => const SendMailView(),
+    '/quote_info':(_)=> const QuoteInput()
   };
 }

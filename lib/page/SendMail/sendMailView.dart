@@ -2,12 +2,14 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:date_field/date_field.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mailbox/components/inputBox.dart';
 import 'package:mailbox/page/SendMail/Model/emailtamplateModel.dart';
 import 'package:mailbox/page/SendMail/Provider/sendMailProvider.dart';
 import 'package:mailbox/page/SendMail/Widgets/signaturePadWidget.dart';
+import 'package:mailbox/page/quote/screens/quote_input.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../Contact/Model/contactModel.dart';
@@ -181,7 +183,7 @@ class _SendMailViewState extends State<SendMailView> {
                               onChange: (String value) {},
                             ),
                           ],
-                          if (stateAction.selectedMailTemplateCode ==
+                          if ( stateAction.selectedMailTemplateCode ==
                               "safe_work_method_statement_email_template") ...[
                             InputBox(
                               controller: stateAction.projectAddress,
@@ -190,6 +192,39 @@ class _SendMailViewState extends State<SendMailView> {
                               onChange: (String value) {},
                             ),
                           ],
+                          if ( stateAction.selectedMailTemplateCode ==
+                              "safe_work_method_statement_email_template") ...[
+                            InputBox(
+                              controller: stateAction.projectAddress,
+                              helperText: '',
+                              hintText: 'Project Address',
+                              onChange: (String value) {},
+                            ),
+                          ],
+
+                          if ( stateAction.selectedMailTemplateCode ==
+                              "quote") ...[
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>QuoteInput()));
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                color: Colors.red,
+                              ),
+                              // child: InputBox(
+                              //   controller: stateAction.projectAddress,
+                              //   helperText: '',
+                              //   hintText: 'Project Address new',
+                              //   onChange: (String value) {
+                              //     print("Hello");
+                              //   },
+                              // ),
+                            ),
+                          ],
+
+
                           DateTimeFormField(
                             decoration: const InputDecoration(
                               fillColor: Color.fromARGB(255, 224, 241, 255),

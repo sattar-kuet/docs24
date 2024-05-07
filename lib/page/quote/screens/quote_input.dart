@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:date_field/date_field.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,10 +26,15 @@ class _QuoteInputState extends State<QuoteInput> {
   final quoteAddressController= TextEditingController();
   final expireDateController= TextEditingController();
   final referenceController= TextEditingController();
+  final abnacnController= TextEditingController();
+  final descriptionController= TextEditingController();
+  final quantityController= TextEditingController();
+  final unitPriceController= TextEditingController();
+  final gstController= TextEditingController();
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
   int _selectedValue = 1;
-
+  String selec_vlaue="ABN";
 
   Future<void> getImage() async {
     final XFile? image =
@@ -46,7 +53,7 @@ class _QuoteInputState extends State<QuoteInput> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(10),
+              const Gap(10),
               Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.grey.shade200,
@@ -123,7 +130,7 @@ class _QuoteInputState extends State<QuoteInput> {
                  ],
                ),
              ),
-              Gap(20),
+              const Gap(20),
               Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.grey.shade200,
@@ -135,7 +142,7 @@ class _QuoteInputState extends State<QuoteInput> {
                   ),),
                 ),
               ),
-              Gap(10),
+              const Gap(10),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical:5, horizontal: 17),
                 child: Column(
@@ -161,7 +168,7 @@ class _QuoteInputState extends State<QuoteInput> {
                         ),
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     const Text('Address', style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -194,32 +201,26 @@ class _QuoteInputState extends State<QuoteInput> {
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                     ),),
-                    SizedBox(
-                      height: 40,
-                      child: Center(
-                        child: DateTimeFormField(
-                          decoration:  InputDecoration(
-                            fillColor: Color.fromARGB(255, 224, 241, 255),
-                            filled: true,
-                            hintStyle: TextStyle(color: Colors.black45),
-                            errorStyle: TextStyle(color: Colors.redAccent),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none),
-                            suffixIcon: Icon(Icons.event_note),
-                            hintText: 'Select Date',
-                          ),
-                          mode: DateTimeFieldPickerMode.date,
-                          autovalidateMode: AutovalidateMode.always,
-                          onDateSelected: (DateTime value) {
-                            final formattedDate =
-                            DateFormat('d MMMM, y').format(value);
-                            Provider.of<SendMailProvider>(context,
-                                listen: false)
-                                .setSelectedDate(formattedDate.toString());
-                          },
-                        ),
+                    DateTimeFormField(
+                      decoration: const InputDecoration(
+                        fillColor: Color.fromARGB(255, 224, 241, 255),
+                        filled: true,
+                        hintStyle: TextStyle(color: Colors.black45),
+                        errorStyle: TextStyle(color: Colors.redAccent),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none),
+                        suffixIcon: Icon(Icons.event_note),
+                        hintText: 'Select Date',
                       ),
+                      mode: DateTimeFieldPickerMode.date,
+                      autovalidateMode: AutovalidateMode.always,
+                      onDateSelected: (DateTime value) {
+                        final formattedDate =
+                        DateFormat('d MMMM, y').format(value);
+                        Provider.of<SendMailProvider>(context,
+                            listen: false)
+                            .setSelectedDate(formattedDate.toString());
+                      },
                     ),
                     const Gap(10),
                     const Text('Expired date', style: TextStyle(
@@ -277,11 +278,11 @@ class _QuoteInputState extends State<QuoteInput> {
                       onChanged: (int? value) {
                         setState(() {
                           _selectedValue = value!;
-
+                          selec_vlaue="ABN";
                         });
                       },
                     ),
-                    Text('ABN'),
+                    const Text('ABN'),
                     Radio<int>(
                       fillColor: MaterialStateColor.resolveWith((states) => Colors.blue),
                       value: 2,
@@ -289,21 +290,228 @@ class _QuoteInputState extends State<QuoteInput> {
                       onChanged: (int? value) {
                         setState(() {
                           _selectedValue = value!;
+                          selec_vlaue="ACN";
                         });
                       },
                     ),
-                    Text('ACN'),
+                    const Text('ACN'),
                   ],
                 ),
               ),
-              InteractiveTextButton(
-                onPressed: ()=>dateAlertDialog(context),
-                child:Text('Select Date',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.blue.shade300
-                  ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('${selec_vlaue} Number', style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),),
+                    TextField(
+                      cursorColor: Colors.blue,
+                      controller: quoteNameController,
+                      decoration: InputDecoration(
+                        hintText: "${selec_vlaue} Number",
+                        contentPadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0), // Adjust the values as needed
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(5.0), // Adjust the value as needed
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(5.0), // Adjust the value as needed
+                        ),
+                      ),
+                    ),
+                    const Gap(30),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey.shade600,
+                          width: 1
+                        ),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              children: [
+                                const Text("Select Item",style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500
+                                ),),
+                                const Gap(10),
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.grey.shade600,
+                                        width: 1
+                                      )
+                                    ),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton2<String>(
+                                        isExpanded: true,
+                                        hint: Text(
+                                          'Select Item',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Theme.of(context).hintColor,
+                                          ),
+                                        ),
+                                        items: items
+                                            .map((String item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ))
+                                            .toList(),
+                                        value: selectedValue,
+                                        onChanged: (String? value) {
+                                          setState(() {
+                                            selectedValue = value;
+                                          });
+                                        },
+                                        buttonStyleData: const ButtonStyleData(
+                                          padding: EdgeInsets.symmetric(horizontal: 16),
+                                          height: 40,
+                                          width: 140,
+                                        ),
+                                        menuItemStyleData: const MenuItemStyleData(
+                                          height: 40,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: const Text("Description: ",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                                const Gap(10),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/2.5,
+                                  child: TextField(
+                                    cursorColor: Colors.blue,
+                                    controller: descriptionController,
+                                    decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: const Text("Quantity: ",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                                const Gap(10),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/2.5,
+                                  child: TextField(
+                                    cursorColor: Colors.blue,
+                                    controller: quantityController,
+                                    decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: const Text("Unit Price: ",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                                const Gap(10),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/2.5,
+                                  child: TextField(
+                                    cursorColor: Colors.blue,
+                                    controller: unitPriceController,
+                                    decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: const Text("GST: ",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                                const Gap(10),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/2.5,
+                                  child: TextField(
+                                    cursorColor: Colors.blue,
+                                    controller: gstController,
+                                    decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -313,3 +521,10 @@ class _QuoteInputState extends State<QuoteInput> {
     );
   }
 }
+final List<String> items = [
+  'Item1',
+  'Item2',
+  'Item3',
+  'Item4',
+];
+String? selectedValue;

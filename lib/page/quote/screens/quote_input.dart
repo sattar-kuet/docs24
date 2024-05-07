@@ -32,6 +32,7 @@ class _QuoteInputState extends State<QuoteInput> {
   final unitPriceController= TextEditingController();
   final gstController= TextEditingController();
   final ImagePicker _picker = ImagePicker();
+  int gst=0,price=0;
   XFile? _image;
   int _selectedValue = 1;
   String selec_vlaue="ABN";
@@ -466,6 +467,12 @@ class _QuoteInputState extends State<QuoteInput> {
                                   child: TextField(
                                     cursorColor: Colors.blue,
                                     controller: unitPriceController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        // Update amount whenever the value of gstController changes
+                                        gst =int.parse(value);
+                                      });
+                                    },
                                     decoration: const InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: Colors.blue),
@@ -494,6 +501,12 @@ class _QuoteInputState extends State<QuoteInput> {
                                   child: TextField(
                                     cursorColor: Colors.blue,
                                     controller: gstController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        // Update amount whenever the value of gstController changes
+                                        price =int.parse(value);
+                                      });
+                                    },
                                     decoration: const InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: Colors.blue),
@@ -503,6 +516,26 @@ class _QuoteInputState extends State<QuoteInput> {
                                       ),
                                     ),
                                   ),
+                                ),
+
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: const Text("Amount AUD: ",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                                const Gap(10),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width/2.5,
+                                  child:  Text( "${gst*price}",style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500
+                                  ),),
                                 ),
 
                               ],

@@ -1363,9 +1363,10 @@ class _QuoteInputState extends State<QuoteInput> {
                                                         .toList(),
                                                     value: selectedValue,
                                                     onChanged: (String? value) {
-                                                      setState(() {
+
                                                         selectedValue = value;
-                                                      });
+                                                        FocusScope.of(context).unfocus();
+
                                                     },
                                                     buttonStyleData: const ButtonStyleData(
                                                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -1521,9 +1522,10 @@ class _QuoteInputState extends State<QuoteInput> {
                                                         .toList(),
                                                     value: selectedGst,
                                                     onChanged: (String? value) {
-                                                      setState(() {
+
                                                         selectedGst = value;
-                                                      });
+                                                        FocusScope.of(context).unfocus();
+
                                                     },
                                                     buttonStyleData: const ButtonStyleData(
                                                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -1953,9 +1955,10 @@ class _QuoteInputState extends State<QuoteInput> {
                                                           .toList(),
                                                       value: selectedValue,
                                                       onChanged: (String? value) {
-                                                        setState(() {
+
                                                           selectedValue = value;
-                                                        });
+                                                          FocusScope.of(context).unfocus();
+
                                                       },
                                                       buttonStyleData: const ButtonStyleData(
                                                         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -2111,9 +2114,10 @@ class _QuoteInputState extends State<QuoteInput> {
                                                           .toList(),
                                                       value: selectedGst,
                                                       onChanged: (String? value) {
-                                                        setState(() {
+
                                                           selectedGst = value;
-                                                        });
+                                                          FocusScope.of(context).unfocus();
+
                                                       },
                                                       buttonStyleData: const ButtonStyleData(
                                                         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -2232,7 +2236,6 @@ class _QuoteInputState extends State<QuoteInput> {
                       quantityController.text = contacts[index].quantity;
                       unitPriceController.text=contacts[index].unitPrice;
                       selectedGst=contacts[index].gst;
-
                       setState(() {
                         selectedIndex = index;
                       });

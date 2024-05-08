@@ -2146,7 +2146,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                               const Gap(10),
                                               SizedBox(
                                                 width: MediaQuery.of(context).size.width/3.5,
-                                                child:  Text( "${quantiry*price}",style: const TextStyle(
+                                                child:  Text( "${int.parse(contacts[selectedIndex].quantity)*int.parse(contacts[selectedIndex].unitPrice)}",style: const TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w500
                                                 ),),
@@ -2195,7 +2195,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                             String description = descriptionController.text.trim();
                                             String quantity = quantityController.text.trim();
                                             String unitPrice=unitPriceController.text.trim();
-                                            int totalAud=int.parse(quantity)*int.parse(unitPrice);
+                                            int totalAud=int.parse(contacts[selectedIndex].quantity)*int.parse(contacts[selectedIndex].unitPrice);
                                             String gst=selectedGst!.trim();
                                             if (description.isNotEmpty && quantity.isNotEmpty && unitPrice.isNotEmpty) {
                                               setState(() {

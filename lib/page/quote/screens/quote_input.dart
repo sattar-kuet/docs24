@@ -1896,6 +1896,337 @@ class _QuoteInputState extends State<QuoteInput> {
                 InkWell(
                     onTap: () {
                       //
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            content: SingleChildScrollView(
+                              child: SizedBox(
+                                height: 370,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              const Text("Select Item:",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                              const Gap(25),
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.grey.shade600,
+                                                          width: 1
+                                                      )
+                                                  ),
+                                                  child: DropdownButtonHideUnderline(
+                                                    child: DropdownButton2<String>(
+                                                      isExpanded: true,
+                                                      hint: Text(
+                                                        'Select Item',
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Theme.of(context).hintColor,
+                                                        ),
+                                                      ),
+                                                      items: items
+                                                          .map((String item) => DropdownMenuItem<String>(
+                                                        value: item,
+                                                        child: Text(
+                                                          item,
+                                                          style: const TextStyle(
+                                                            fontSize: 14,
+                                                          ),
+                                                        ),
+                                                      ))
+                                                          .toList(),
+                                                      value: selectedValue,
+                                                      onChanged: (String? value) {
+                                                        setState(() {
+                                                          selectedValue = value;
+                                                        });
+                                                      },
+                                                      buttonStyleData: const ButtonStyleData(
+                                                        padding: EdgeInsets.symmetric(horizontal: 16),
+                                                        height: 30,
+                                                        width: 120,
+                                                      ),
+                                                      menuItemStyleData: const MenuItemStyleData(
+                                                        height: 20,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/4,
+                                                child: const Text("Description: ",style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500
+                                                ),),
+                                              ),
+                                              const Gap(10),
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/3.5,
+                                                child: TextField(
+                                                  cursorColor: Colors.blue,
+                                                  controller: descriptionController,
+                                                  decoration: const InputDecoration(
+                                                    enabledBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                    focusedBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/4,
+                                                child: const Text("Quantity: ",style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500
+                                                ),),
+                                              ),
+                                              const Gap(10),
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/3.5,
+                                                child: TextField(
+                                                  cursorColor: Colors.blue,
+                                                  controller: quantityController,
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      value==""? quantiry =int.parse("0"):quantiry =int.parse(value);
+                                                    });
+                                                  },
+
+                                                  decoration: const InputDecoration(
+                                                    enabledBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                    focusedBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/4,
+                                                child: const Text("Unit Price: ",style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500
+                                                ),),
+                                              ),
+                                              const Gap(10),
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/3.5,
+                                                child: TextField(
+                                                  cursorColor: Colors.blue,
+                                                  controller: unitPriceController,
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      if(value==""){
+                                                        price =int.parse("0");
+                                                      }else{
+                                                        price =int.parse(value);
+                                                      }
+                                                    });
+                                                  },
+                                                  decoration: const InputDecoration(
+                                                    enabledBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                    focusedBorder: UnderlineInputBorder(
+                                                      borderSide: BorderSide(color: Colors.blue),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                          const Gap(20),
+                                          Row(
+                                            children: [
+                                              const Text("Select GST:",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                              const Gap(30),
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.grey.shade600,
+                                                          width: 1
+                                                      )
+                                                  ),
+                                                  child: DropdownButtonHideUnderline(
+                                                    child: DropdownButton2<String>(
+                                                      isExpanded: true,
+                                                      hint: Text(
+                                                        'gst',
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Theme.of(context).hintColor,
+                                                        ),
+                                                      ),
+                                                      items: gstItem
+                                                          .map((String item) => DropdownMenuItem<String>(
+                                                        value: item,
+                                                        child: Text(
+                                                          item,
+                                                          style: const TextStyle(
+                                                            fontSize: 12,
+                                                          ),
+                                                        ),
+                                                      ))
+                                                          .toList(),
+                                                      value: selectedGst,
+                                                      onChanged: (String? value) {
+                                                        setState(() {
+                                                          selectedGst = value;
+                                                        });
+                                                      },
+                                                      buttonStyleData: const ButtonStyleData(
+                                                        padding: EdgeInsets.symmetric(horizontal: 16),
+                                                        height: 30,
+                                                        width: 120,
+                                                      ),
+                                                      menuItemStyleData: const MenuItemStyleData(
+                                                        height: 20,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const Gap(10),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/4,
+                                                child: const Text("Amount AUD: ",style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500
+                                                ),),
+                                              ),
+                                              const Gap(10),
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width/3.5,
+                                                child:  Text( "${quantiry*price}",style: const TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500
+                                                ),),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            //
+                                            String description = descriptionController.text.trim();
+                                            String quantity = quantityController.text.trim();
+                                            String unitPrice=unitPriceController.text.trim();
+                                            String selectedItem=selectedValue!;
+                                            String selectedGstItem=selectedGst!;
+                                            int totalAud=int.parse(quantity)*int.parse(unitPrice);
+                                            if (description.isNotEmpty && quantity.isNotEmpty && selectedItem.isNotEmpty && unitPrice.isNotEmpty && selectedGst!.isNotEmpty && selectedItem!.isNotEmpty) {
+                                              setState(() {
+                                                descriptionController.text = '';
+                                                quantityController.text = '';
+                                                unitPriceController.text='';
+                                                contacts.add(ItemsInfo(item: selectedItem,description: description, quantity: quantity, unitPrice: unitPrice, gst: selectedGstItem, TAUD: totalAud));
+
+                                              });
+                                            }
+                                            Navigator.of(context).pop();
+                                            //
+                                          },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade600), // Set the button's background color
+                                          ),
+                                          child: const Text('Save', style: TextStyle(color: Colors.white)),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            //
+                                            String item=selectedValue!.trim();
+                                            String description = descriptionController.text.trim();
+                                            String quantity = quantityController.text.trim();
+                                            String unitPrice=unitPriceController.text.trim();
+                                            int totalAud=int.parse(quantity)*int.parse(unitPrice);
+                                            String gst=selectedGst!.trim();
+                                            if (description.isNotEmpty && quantity.isNotEmpty && unitPrice.isNotEmpty) {
+                                              setState(() {
+
+                                                descriptionController.text = '';
+                                                quantityController.text = '';
+                                                unitPriceController.text='';
+
+                                                contacts[selectedIndex].item=item;
+                                                contacts[selectedIndex].description = description;
+                                                contacts[selectedIndex].quantity = quantity;
+                                                contacts[selectedIndex].unitPrice=unitPrice;
+                                                contacts[selectedIndex].gst=gst;
+                                                contacts[selectedIndex].TAUD=totalAud;
+                                                selectedIndex = -1;
+
+                                              });
+                                            }
+                                            Navigator.of(context).pop();
+                                            //
+                                          },
+                                          style: ButtonStyle(
+                                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade600), // Set the button's background color
+                                          ),
+                                          child: const Text('Update', style: TextStyle(color: Colors.white)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
                       selectedValue=contacts[index].item;
                       descriptionController.text = contacts[index].description;
                       quantityController.text = contacts[index].quantity;

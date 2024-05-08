@@ -711,8 +711,10 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:mailbox/page/quote/screens/itemsInfo.dart';
 import 'package:mailbox/page/quote/screens/select_date/select_date.dart';
 import 'package:provider/provider.dart';
+
 
 import '../../../widgets/text_button.dart';
 import '../../SendMail/Provider/sendMailProvider.dart';
@@ -736,6 +738,9 @@ class _QuoteInputState extends State<QuoteInput> {
   final unitPriceController= TextEditingController();
   final gstController= TextEditingController();
   final ImagePicker _picker = ImagePicker();
+  List<ItemsInfo> contacts = List.empty(growable: true);
+
+  int selectedIndex = -1;
   int quantiry=0,price=0;
   XFile? _image;
   int _selectedValue = 1;
@@ -770,225 +775,226 @@ class _QuoteInputState extends State<QuoteInput> {
                   color: Colors.grey.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        children: [
-                          const Text("Select Item",style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500
-                          ),),
-                          const Gap(10),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey.shade600,
-                                      width: 1
-                                  )
-                              ),
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton2<String>(
-                                  isExpanded: true,
-                                  hint: Text(
-                                    'Select Item',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(context).hintColor,
-                                    ),
-                                  ),
-                                  items: items
-                                      .map((String item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ))
-                                      .toList(),
-                                  value: selectedValue,
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      selectedValue = value;
-                                    });
-                                  },
-                                  buttonStyleData: const ButtonStyleData(
-                                    padding: EdgeInsets.symmetric(horizontal: 16),
-                                    height: 40,
-                                    width: 140,
-                                  ),
-                                  menuItemStyleData: const MenuItemStyleData(
-                                    height: 40,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/3.5,
-                            child: const Text("Description: ",style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-                          const Gap(10),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/2.5,
-                            child: TextField(
-                              cursorColor: Colors.blue,
-                              controller: descriptionController,
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                              ),
-                            ),
-                          ),
+                // child: Padding(
+                //   padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
+                //   child: Column(
+                //     mainAxisSize: MainAxisSize.min,
+                //     children: [
+                //       Row(
+                //         children: [
+                //           const Text("Select Item",style: TextStyle(
+                //               fontSize: 18,
+                //               fontWeight: FontWeight.w500
+                //           ),),
+                //           const Gap(10),
+                //           Align(
+                //             alignment: Alignment.topLeft,
+                //             child: Container(
+                //               decoration: BoxDecoration(
+                //                   border: Border.all(
+                //                       color: Colors.grey.shade600,
+                //                       width: 1
+                //                   )
+                //               ),
+                //               child: DropdownButtonHideUnderline(
+                //                 child: DropdownButton2<String>(
+                //                   isExpanded: true,
+                //                   hint: Text(
+                //                     'Select Item',
+                //                     style: TextStyle(
+                //                       fontSize: 14,
+                //                       color: Theme.of(context).hintColor,
+                //                     ),
+                //                   ),
+                //                   items: items
+                //                       .map((String item) => DropdownMenuItem<String>(
+                //                     value: item,
+                //                     child: Text(
+                //                       item,
+                //                       style: const TextStyle(
+                //                         fontSize: 14,
+                //                       ),
+                //                     ),
+                //                   ))
+                //                       .toList(),
+                //                   value: selectedValue,
+                //                   onChanged: (String? value) {
+                //                     setState(() {
+                //                       selectedValue = value;
+                //                     });
+                //                   },
+                //                   buttonStyleData: const ButtonStyleData(
+                //                     padding: EdgeInsets.symmetric(horizontal: 16),
+                //                     height: 40,
+                //                     width: 140,
+                //                   ),
+                //                   menuItemStyleData: const MenuItemStyleData(
+                //                     height: 40,
+                //                   ),
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //       Row(
+                //         children: [
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/3.5,
+                //             child: const Text("Description: ",style: TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //           const Gap(10),
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/2.5,
+                //             child: TextField(
+                //               cursorColor: Colors.blue,
+                //               controller: descriptionController,
+                //               decoration: const InputDecoration(
+                //                 enabledBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //                 focusedBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //       Row(
+                //         children: [
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/3.5,
+                //             child: const Text("Quantity: ",style: TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //           const Gap(10),
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/2.5,
+                //             child: TextField(
+                //               cursorColor: Colors.blue,
+                //               controller: quantityController,
+                //               onChanged: (value) {
+                //                 setState(() {
+                //                   value==""? quantiry =int.parse("0"):quantiry =int.parse(value);
+                //                 });
+                //               },
+                //
+                //               decoration: const InputDecoration(
+                //                 enabledBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //                 focusedBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //       Row(
+                //         children: [
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/3.5,
+                //             child: const Text("Unit Price: ",style: TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //           const Gap(10),
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/2.5,
+                //             child: TextField(
+                //               cursorColor: Colors.blue,
+                //               controller: unitPriceController,
+                //               onChanged: (value) {
+                //                 setState(() {
+                //                   if(value==""){
+                //                     price =int.parse("0");
+                //                   }else{
+                //                     price =int.parse(value);
+                //                   }
+                //                 });
+                //               },
+                //               decoration: const InputDecoration(
+                //                 enabledBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //                 focusedBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //       Row(
+                //         children: [
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/3.5,
+                //             child: const Text("GST: ",style: TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //           const Gap(10),
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/2.5,
+                //             child: TextField(
+                //               cursorColor: Colors.blue,
+                //               controller: gstController,
+                //               onChanged: (value) {
+                //                 setState(() {
+                //                   value==""?gst =double.parse("0"):gst =double.parse(value) ;
+                //                 });
+                //               },
+                //               decoration: const InputDecoration(
+                //                 hintText: "%",
+                //                 enabledBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //                 focusedBorder: UnderlineInputBorder(
+                //                   borderSide: BorderSide(color: Colors.blue),
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //       const Gap(10),
+                //       Row(
+                //         children: [
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/3.5,
+                //             child: const Text("Amount AUD: ",style: TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //           const Gap(10),
+                //           SizedBox(
+                //             width: MediaQuery.of(context).size.width/2.5,
+                //             child:  Text( "${quantiry*price}",style: const TextStyle(
+                //                 fontSize: 18,
+                //                 fontWeight: FontWeight.w500
+                //             ),),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
 
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/3.5,
-                            child: const Text("Quantity: ",style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-                          const Gap(10),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/2.5,
-                            child: TextField(
-                              cursorColor: Colors.blue,
-                              controller: quantityController,
-                              onChanged: (value) {
-                                setState(() {
-                                  value==""? quantiry =int.parse("0"):quantiry =int.parse(value);
-                                });
-                              },
-
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/3.5,
-                            child: const Text("Unit Price: ",style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-                          const Gap(10),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/2.5,
-                            child: TextField(
-                              cursorColor: Colors.blue,
-                              controller: unitPriceController,
-                              onChanged: (value) {
-                                setState(() {
-                                  if(value==""){
-                                    price =int.parse("0");
-                                  }else{
-                                    price =int.parse(value);
-                                  }
-                                });
-                              },
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/3.5,
-                            child: const Text("GST: ",style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-                          const Gap(10),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/2.5,
-                            child: TextField(
-                              cursorColor: Colors.blue,
-                              controller: gstController,
-                              onChanged: (value) {
-                                setState(() {
-                                  value==""?gst =double.parse("0"):gst =double.parse(value) ;
-                                });
-                              },
-                              decoration: const InputDecoration(
-                                hintText: "%",
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                      const Gap(10),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/3.5,
-                            child: const Text("Amount AUD: ",style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-                          const Gap(10),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width/2.5,
-                            child:  Text( "${quantiry*price}",style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500
-                            ),),
-                          ),
-
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
               ),
             ),
           ),
@@ -1008,20 +1014,20 @@ class _QuoteInputState extends State<QuoteInput> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            amount_aud=quantiry*price;
-            sub_total=sub_total+amount_aud;
-            if(gst>0){
-              total_gst=(total_gst+(gst*sub_total)/100);
-            }
-          });
-        },
-        child: const Text('Submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),),
-        shape: const CircleBorder(),
-        backgroundColor: Colors.blue.shade300,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: (){
+      //     setState(() {
+      //       amount_aud=quantiry*price;
+      //       sub_total=sub_total+amount_aud;
+      //       if(gst>0){
+      //         total_gst=(total_gst+(gst*sub_total)/100);
+      //       }
+      //     });
+      //   },
+      //   child: const Text('Submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),),
+      //   shape: const CircleBorder(),
+      //   backgroundColor: Colors.blue.shade300,
+      // ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -1273,7 +1279,7 @@ class _QuoteInputState extends State<QuoteInput> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 17),
+                padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -1298,342 +1304,438 @@ class _QuoteInputState extends State<QuoteInput> {
                       ),
                     ),
                     const Gap(30),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey.shade600,
-                              width: 1
+                ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          borderRadius: BorderRadius.circular(5)
-                      ),
-                      child: Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Text("Select Item",style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500
-                                    ),),
-                                    const Gap(10),
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.grey.shade600,
-                                                width: 1
-                                            )
-                                        ),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton2<String>(
-                                            isExpanded: true,
-                                            hint: Text(
-                                              'Select Item',
-                                              style: TextStyle(
+                          content: SingleChildScrollView(
+                            child: SizedBox(
+                              height: 370,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(height: 10),
+                                        Row(
+                                          children: [
+                                            const Text("Select Item:",style: TextStyle(
                                                 fontSize: 14,
-                                                color: Theme.of(context).hintColor,
-                                              ),
-                                            ),
-                                            items: items
-                                                .map((String item) => DropdownMenuItem<String>(
-                                              value: item,
-                                              child: Text(
-                                                item,
-                                                style: const TextStyle(
-                                                  fontSize: 14,
+                                                fontWeight: FontWeight.w500
+                                            ),),
+                                            const Gap(25),
+                                            Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.grey.shade600,
+                                                        width: 1
+                                                    )
+                                                ),
+                                                child: DropdownButtonHideUnderline(
+                                                  child: DropdownButton2<String>(
+                                                    isExpanded: true,
+                                                    hint: Text(
+                                                      'Select Item',
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Theme.of(context).hintColor,
+                                                      ),
+                                                    ),
+                                                    items: items
+                                                        .map((String item) => DropdownMenuItem<String>(
+                                                      value: item,
+                                                      child: Text(
+                                                        item,
+                                                        style: const TextStyle(
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                    ))
+                                                        .toList(),
+                                                    value: selectedValue,
+                                                    onChanged: (String? value) {
+                                                      setState(() {
+                                                        selectedValue = value;
+                                                      });
+                                                    },
+                                                    buttonStyleData: const ButtonStyleData(
+                                                      padding: EdgeInsets.symmetric(horizontal: 16),
+                                                      height: 30,
+                                                      width: 120,
+                                                    ),
+                                                    menuItemStyleData: const MenuItemStyleData(
+                                                      height: 20,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ))
-                                                .toList(),
-                                            value: selectedValue,
-                                            onChanged: (String? value) {
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/4,
+                                              child: const Text("Description: ",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                            ),
+                                            const Gap(10),
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/3.5,
+                                              child: TextField(
+                                                cursorColor: Colors.blue,
+                                                controller: descriptionController,
+                                                decoration: const InputDecoration(
+                                                  enabledBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                  focusedBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/4,
+                                              child: const Text("Quantity: ",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                            ),
+                                            const Gap(10),
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/3.5,
+                                              child: TextField(
+                                                cursorColor: Colors.blue,
+                                                controller: quantityController,
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    value==""? quantiry =int.parse("0"):quantiry =int.parse(value);
+                                                  });
+                                                },
+
+                                                decoration: const InputDecoration(
+                                                  enabledBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                  focusedBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/4,
+                                              child: const Text("Unit Price: ",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                            ),
+                                            const Gap(10),
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/3.5,
+                                              child: TextField(
+                                                cursorColor: Colors.blue,
+                                                controller: unitPriceController,
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    if(value==""){
+                                                      price =int.parse("0");
+                                                    }else{
+                                                      price =int.parse(value);
+                                                    }
+                                                  });
+                                                },
+                                                decoration: const InputDecoration(
+                                                  enabledBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                  focusedBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(color: Colors.blue),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                        const Gap(20),
+                                        Row(
+                                          children: [
+                                            const Text("Select GST:",style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500
+                                            ),),
+                                            const Gap(30),
+                                            Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.grey.shade600,
+                                                        width: 1
+                                                    )
+                                                ),
+                                                child: DropdownButtonHideUnderline(
+                                                  child: DropdownButton2<String>(
+                                                    isExpanded: true,
+                                                    hint: Text(
+                                                      'gst',
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Theme.of(context).hintColor,
+                                                      ),
+                                                    ),
+                                                    items: gstItem
+                                                        .map((String item) => DropdownMenuItem<String>(
+                                                      value: item,
+                                                      child: Text(
+                                                        item,
+                                                        style: const TextStyle(
+                                                          fontSize: 12,
+                                                        ),
+                                                      ),
+                                                    ))
+                                                        .toList(),
+                                                    value: selectedGst,
+                                                    onChanged: (String? value) {
+                                                      setState(() {
+                                                        selectedGst = value;
+                                                      });
+                                                    },
+                                                    buttonStyleData: const ButtonStyleData(
+                                                      padding: EdgeInsets.symmetric(horizontal: 16),
+                                                      height: 30,
+                                                      width: 120,
+                                                    ),
+                                                    menuItemStyleData: const MenuItemStyleData(
+                                                      height: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Gap(10),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/4,
+                                              child: const Text("Amount AUD: ",style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                            ),
+                                            const Gap(10),
+                                            SizedBox(
+                                              width: MediaQuery.of(context).size.width/3.5,
+                                              child:  Text( "${quantiry*price}",style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500
+                                              ),),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            //
+                                            String description = descriptionController.text.trim();
+                                            String quantity = quantityController.text.trim();
+                                            String unitPrice=unitPriceController.text.trim();
+                                            String selectedItem=selectedValue!;
+                                            String selectedGstItem=selectedGst!;
+                                            int totalAud=int.parse(quantity)*int.parse(unitPrice);
+                                            if (description.isNotEmpty && quantity.isNotEmpty && selectedItem.isNotEmpty && unitPrice.isNotEmpty && selectedGst!.isNotEmpty && selectedItem!.isNotEmpty) {
                                               setState(() {
-                                                selectedValue = value;
+                                                descriptionController.text = '';
+                                                quantityController.text = '';
+                                                unitPriceController.text='';
+                                                contacts.add(ItemsInfo(item: selectedItem,description: description, quantity: quantity, unitPrice: unitPrice, gst: selectedGstItem, TAUD: totalAud));
+
                                               });
-                                            },
-                                            buttonStyleData: const ButtonStyleData(
-                                              padding: EdgeInsets.symmetric(horizontal: 16),
-                                              height: 40,
-                                              width: 140,
-                                            ),
-                                            menuItemStyleData: const MenuItemStyleData(
-                                              height: 40,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/3.5,
-                                      child: const Text("Description: ",style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-                                    const Gap(10),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/2.5,
-                                      child: TextField(
-                                        cursorColor: Colors.blue,
-                                        controller: descriptionController,
-                                        decoration: const InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/3.5,
-                                      child: const Text("Quantity: ",style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-                                    const Gap(10),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/2.5,
-                                      child: TextField(
-                                        cursorColor: Colors.blue,
-                                        controller: quantityController,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            value==""? quantiry =int.parse("0"):quantiry =int.parse(value);
-                                          });
-                                        },
-
-                                        decoration: const InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/3.5,
-                                      child: const Text("Unit Price: ",style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-                                    const Gap(10),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/2.5,
-                                      child: TextField(
-                                        cursorColor: Colors.blue,
-                                        controller: unitPriceController,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            if(value==""){
-                                              price =int.parse("0");
-                                            }else{
-                                              price =int.parse(value);
                                             }
-                                          });
-                                        },
-                                        decoration: const InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
+                                            Navigator.of(context).pop();
+                                            //
+                                          },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade600), // Set the button's background color
                                         ),
+                                        child: const Text('Save', style: TextStyle(color: Colors.white)),
                                       ),
-                                    ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            //
+                                            String item=selectedValue!.trim();
+                                            String description = descriptionController.text.trim();
+                                            String quantity = quantityController.text.trim();
+                                            String unitPrice=unitPriceController.text.trim();
+                                            String gst=selectedGst!.trim();
+                                            if (description.isNotEmpty && quantity.isNotEmpty && unitPrice.isNotEmpty) {
+                                              setState(() {
 
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/3.5,
-                                      child: const Text("GST: ",style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-                                    const Gap(10),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/2.5,
-                                      child: TextField(
-                                        cursorColor: Colors.blue,
-                                        controller: gstController,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            value==""?gst =double.parse("0"):gst =double.parse(value) ;
-                                          });
-                                        },
-                                        decoration: const InputDecoration(
-                                          hintText: "%",
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(color: Colors.blue),
-                                          ),
+                                                descriptionController.text = '';
+                                                quantityController.text = '';
+                                                unitPriceController.text='';
+
+                                                contacts[selectedIndex].item=item;
+                                                contacts[selectedIndex].description = description;
+                                                contacts[selectedIndex].quantity = quantity;
+                                                contacts[selectedIndex].unitPrice=unitPrice;
+                                                contacts[selectedIndex].gst=gst;
+                                                selectedIndex = -1;
+
+                                              });
+                                            }
+                                            Navigator.of(context).pop();
+                                            //
+                                          },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade600), // Set the button's background color
                                         ),
+                                        child: const Text('Update', style: TextStyle(color: Colors.white)),
                                       ),
-                                    ),
-
-                                  ],
-                                ),
-                                const Gap(10),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/3.5,
-                                      child: const Text("Amount AUD: ",style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-                                    const Gap(10),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width/2.5,
-                                      child:  Text( "${quantiry*price}",style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500
-                                      ),),
-                                    ),
-
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            right: 10,
-                            bottom: 10,
-                            child: GestureDetector(
-                              onTap: _onAddButtonPressed,
-                              child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: Colors.red
-                                ),
-                                child: const Center(
-                                  child: Text('Add', style: TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.bold,
-                                      color: Colors.white
-                                  ),),
-                                ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                          )
-
-                        ],
-                      ),
-                    ),
-                    const Gap(20),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey.shade600,
-                              width: 1
                           ),
-                          borderRadius: BorderRadius.circular(5)
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/3.5,
-                                  child: const Text("Subtotal: ",style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
-                                const Gap(10),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/2.5,
-                                  child:  Text( "${sub_total}",style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
+                        );
+                      },
+                    );
+                  },
+                  child: Text('Add Item'),
+                ),
 
-                              ],
-                            ),
-                            const Gap(10),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/3.5,
-                                  child: const Text("Total GST: ",style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
-                                const Gap(10),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/2.5,
-                                  child:  Text( "${total_gst}",style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
-
-                              ],
-                            ),
-                            const Gap(10),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/3.5,
-                                  child: const Text("Total AUD: ",style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
-                                const Gap(10),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width/2.5,
-                                  child:  Text( "${total_gst+sub_total}",style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500
-                                  ),),
-                                ),
-
-                              ],
-                            ),
-                          ],
+                    const SizedBox(height: 10),
+                    contacts.isEmpty
+                        ? const Text(
+                      'No Contact yet..',
+                      style: TextStyle(fontSize: 22),
+                    )
+                        :  SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 200,
+                          child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: contacts.length,
+                          itemBuilder: (context, index) => getRow(index),
+                                                ),
                         ),
-                      ),
-                    ),
+
+                     Gap(20),
+                    // Container(
+                    //   width: MediaQuery.of(context).size.width,
+                    //   decoration: BoxDecoration(
+                    //       border: Border.all(
+                    //           color: Colors.grey.shade600,
+                    //           width: 1
+                    //       ),
+                    //       borderRadius: BorderRadius.circular(5)
+                    //   ),
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.only(left: 12.0, top: 10.0, bottom: 10.0),
+                    //     child: Column(
+                    //       mainAxisSize: MainAxisSize.min,
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/3.5,
+                    //               child: const Text("Subtotal: ",style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //             const Gap(10),
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/2.5,
+                    //               child:  Text( "${sub_total}",style: const TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //         const Gap(10),
+                    //         Row(
+                    //           children: [
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/3.5,
+                    //               child: const Text("Total GST: ",style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //             const Gap(10),
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/2.5,
+                    //               child:  Text( "${total_gst}",style: const TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //         const Gap(10),
+                    //         Row(
+                    //           children: [
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/3.5,
+                    //               child: const Text("Total AUD: ",style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //             const Gap(10),
+                    //             SizedBox(
+                    //               width: MediaQuery.of(context).size.width/2.5,
+                    //               child:  Text( "${total_gst+sub_total}",style: const TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.w500
+                    //               ),),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     // Expanded(
                     //   child: ListView.builder(
                     //     scrollDirection: Axis.horizontal,
@@ -1652,6 +1754,177 @@ class _QuoteInputState extends State<QuoteInput> {
       ),
     );
   }
+  Widget getRow(int index) {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width, // Set a fixed width for each card
+      child: Card(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Text(
+              //   contacts[index].description,
+              //   style: const TextStyle(fontWeight: FontWeight.bold),
+              // ),
+              // Text(contacts[index].quantity),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("Select Item: ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2.5,
+                    child:  Text( contacts[index].item,style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("Description: ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2.5,
+                    child:  Text( contacts[index].description,style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("Quantity: ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3,
+                    child:  Text( contacts[index].quantity,style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("Unit Price: ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3,
+                    child:  Text( contacts[index].unitPrice,style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("GST ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3,
+                    child:  Text( contacts[index].gst,style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3.5,
+                    child: const Text("Amount AUD: ",style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/3,
+                    child:  Text( '${contacts[index].TAUD}',style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),),
+                  ),
+
+                ],
+              ),
+
+
+          SizedBox(
+            width: 50,
+            child: Row(
+              children: [
+                InkWell(
+                    onTap: () {
+                      //
+                      selectedValue=contacts[index].item;
+                      descriptionController.text = contacts[index].description;
+                      quantityController.text = contacts[index].quantity;
+                      unitPriceController.text=contacts[index].unitPrice;
+                      selectedGst=contacts[index].gst;
+
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                      //
+                    },
+                    child: const Icon(Icons.edit)),
+                InkWell(
+                    onTap: (() {
+                      //
+                      setState(() {
+                        contacts.removeAt(index);
+                      });
+                      //
+                    }),
+                    child: const Icon(Icons.delete)),
+              ],
+            ),
+          ),
+    ]
+        ),
+      ),
+    );
+  }
 }
 final List<String> items = [
   'Item1',
@@ -1660,3 +1933,8 @@ final List<String> items = [
   'Item4',
 ];
 String? selectedValue;
+final List<String> gstItem = [
+  'GST',
+  'Non GST'
+];
+String? selectedGst;

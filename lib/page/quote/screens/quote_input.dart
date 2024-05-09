@@ -976,755 +976,757 @@ class _QuoteInputState extends State<QuoteInput> {
   }
 
   Widget getRow(int index) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10, top: 10),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.grey.withOpacity(0.2),
-        ),
-        width:
-            MediaQuery.of(context).size.width/1.2, // Set a fixed width for each card
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "Select Item: ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10, top: 10),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          width:
+              MediaQuery.of(context).size.width/1.2, // Set a fixed width for each card
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "Select Item: ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    contacts[index].item,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      contacts[index].item,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "Description: ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "Description: ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    contacts[index].description,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      contacts[index].description,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "Quantity: ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "Quantity: ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    contacts[index].quantity,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      contacts[index].quantity,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "Unit Price: ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "Unit Price: ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width /2.5,
-                  child: Text(
-                    contacts[index].unitPrice,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width /2.5,
+                    child: Text(
+                      contacts[index].unitPrice,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "GST ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "GST ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width /2.5,
-                  child: Text(
-                    contacts[index].gst,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width /2.5,
+                    child: Text(
+                      contacts[index].gst,
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
-                  child: const Text(
-                    "Amount AUD: ",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: const Text(
+                      "Amount AUD: ",
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-                //const Gap(10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    '${contacts[index].TAUD}',
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  //const Gap(10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      '${contacts[index].TAUD}',
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: 35,
-                      width: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: InkWell(
-                              onTap: () {
-                                //
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      content: SingleChildScrollView(
-                                        child: SizedBox(
-                                          height: 370,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Column(
-                                                  children: [
-                                                    const SizedBox(height: 10),
-                                                    Row(
-                                                      children: [
-                                                        const Text(
-                                                          "Select Item:",
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500),
-                                                        ),
-                                                        const Gap(25),
-                                                        Align(
-                                                          alignment:
-                                                              Alignment.topLeft,
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade600,
-                                                                    width: 1)),
-                                                            child:
-                                                                DropdownButtonHideUnderline(
+              SizedBox(
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: InkWell(
+                                onTap: () {
+                                  //
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        content: SingleChildScrollView(
+                                          child: SizedBox(
+                                            height: 370,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Column(
+                                                    children: [
+                                                      const SizedBox(height: 10),
+                                                      Row(
+                                                        children: [
+                                                          const Text(
+                                                            "Select Item:",
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                          ),
+                                                          const Gap(25),
+                                                          Align(
+                                                            alignment:
+                                                                Alignment.topLeft,
+                                                            child: Container(
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: Colors
+                                                                          .grey
+                                                                          .shade600,
+                                                                      width: 1)),
                                                               child:
-                                                                  DropdownButton2<
-                                                                      String>(
-                                                                isExpanded: true,
-                                                                hint: Text(
-                                                                  'Select Item',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize: 14,
-                                                                    color: Theme.of(
+                                                                  DropdownButtonHideUnderline(
+                                                                child:
+                                                                    DropdownButton2<
+                                                                        String>(
+                                                                  isExpanded: true,
+                                                                  hint: Text(
+                                                                    'Select Item',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize: 14,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .hintColor,
+                                                                    ),
+                                                                  ),
+                                                                  items: items
+                                                                      .map((String
+                                                                              item) =>
+                                                                          DropdownMenuItem<
+                                                                              String>(
+                                                                            value:
+                                                                                item,
+                                                                            child:
+                                                                                Text(
+                                                                              item,
+                                                                              style:
+                                                                                  const TextStyle(
+                                                                                fontSize:
+                                                                                    14,
+                                                                              ),
+                                                                            ),
+                                                                          ))
+                                                                      .toList(),
+                                                                  value:
+                                                                      selectedValue,
+                                                                  onChanged:
+                                                                      (String?
+                                                                          value) {
+                                                                    selectedValue =
+                                                                        value;
+                                                                    FocusScope.of(
                                                                             context)
-                                                                        .hintColor,
+                                                                        .unfocus();
+                                                                  },
+                                                                  buttonStyleData:
+                                                                      const ButtonStyleData(
+                                                                    padding: EdgeInsets
+                                                                        .symmetric(
+                                                                            horizontal:
+                                                                                16),
+                                                                    height: 30,
+                                                                    width: 100,
+                                                                  ),
+                                                                  menuItemStyleData:
+                                                                      const MenuItemStyleData(
+                                                                    height: 20,
                                                                   ),
                                                                 ),
-                                                                items: items
-                                                                    .map((String
-                                                                            item) =>
-                                                                        DropdownMenuItem<
-                                                                            String>(
-                                                                          value:
-                                                                              item,
-                                                                          child:
-                                                                              Text(
-                                                                            item,
-                                                                            style:
-                                                                                const TextStyle(
-                                                                              fontSize:
-                                                                                  14,
-                                                                            ),
-                                                                          ),
-                                                                        ))
-                                                                    .toList(),
-                                                                value:
-                                                                    selectedValue,
-                                                                onChanged:
-                                                                    (String?
-                                                                        value) {
-                                                                  selectedValue =
-                                                                      value;
-                                                                  FocusScope.of(
-                                                                          context)
-                                                                      .unfocus();
-                                                                },
-                                                                buttonStyleData:
-                                                                    const ButtonStyleData(
-                                                                  padding: EdgeInsets
-                                                                      .symmetric(
-                                                                          horizontal:
-                                                                              16),
-                                                                  height: 30,
-                                                                  width: 100,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                4,
+                                                            child: const Text(
+                                                              "Description: ",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
+                                                          ),
+                                                          const Gap(10),
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.5,
+                                                            child: TextField(
+                                                              cursorColor:
+                                                                  Colors.blue,
+                                                              controller:
+                                                                  descriptionController,
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                enabledBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
                                                                 ),
-                                                                menuItemStyleData:
-                                                                    const MenuItemStyleData(
-                                                                  height: 20,
+                                                                focusedBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              4,
-                                                          child: const Text(
-                                                            "Description: ",
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                4,
+                                                            child: const Text(
+                                                              "Quantity: ",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        const Gap(10),
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              3.5,
-                                                          child: TextField(
-                                                            cursorColor:
-                                                                Colors.blue,
-                                                            controller:
-                                                                descriptionController,
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              enabledBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
-                                                              ),
-                                                              focusedBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
+                                                          const Gap(10),
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.5,
+                                                            child: TextField(
+                                                              cursorColor:
+                                                                  Colors.blue,
+                                                              controller:
+                                                                  quantityController,
+                                                              onChanged: (value) {
+                                                                setState(() {
+                                                                  value == ""
+                                                                      ? quantiry =
+                                                                          int.parse(
+                                                                              "0")
+                                                                      : quantiry =
+                                                                          int.parse(
+                                                                              value);
+                                                                });
+                                                              },
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                enabledBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
+                                                                ),
+                                                                focusedBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              4,
-                                                          child: const Text(
-                                                            "Quantity: ",
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(height: 10),
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                4,
+                                                            child: const Text(
+                                                              "Unit Price: ",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        const Gap(10),
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              3.5,
-                                                          child: TextField(
-                                                            cursorColor:
-                                                                Colors.blue,
-                                                            controller:
-                                                                quantityController,
-                                                            onChanged: (value) {
-                                                              setState(() {
-                                                                value == ""
-                                                                    ? quantiry =
+                                                          const Gap(10),
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.5,
+                                                            child: TextField(
+                                                              cursorColor:
+                                                                  Colors.blue,
+                                                              controller:
+                                                                  unitPriceController,
+                                                              onChanged: (value) {
+                                                                setState(() {
+                                                                  if (value == "") {
+                                                                    price =
                                                                         int.parse(
-                                                                            "0")
-                                                                    : quantiry =
+                                                                            "0");
+                                                                  } else {
+                                                                    price =
                                                                         int.parse(
                                                                             value);
-                                                              });
-                                                            },
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              enabledBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
-                                                              ),
-                                                              focusedBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
+                                                                  }
+                                                                });
+                                                              },
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                enabledBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
+                                                                ),
+                                                                focusedBorder:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                          color: Colors
+                                                                              .blue),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    const SizedBox(height: 10),
-                                                    Row(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              4,
-                                                          child: const Text(
-                                                            "Unit Price: ",
+                                                        ],
+                                                      ),
+                                                      const Gap(20),
+                                                      Row(
+                                                        children: [
+                                                          const Text(
+                                                            "Select GST:",
                                                             style: TextStyle(
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500),
                                                           ),
-                                                        ),
-                                                        const Gap(10),
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              3.5,
-                                                          child: TextField(
-                                                            cursorColor:
-                                                                Colors.blue,
-                                                            controller:
-                                                                unitPriceController,
-                                                            onChanged: (value) {
-                                                              setState(() {
-                                                                if (value == "") {
-                                                                  price =
-                                                                      int.parse(
-                                                                          "0");
-                                                                } else {
-                                                                  price =
-                                                                      int.parse(
-                                                                          value);
-                                                                }
-                                                              });
-                                                            },
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              enabledBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
-                                                              ),
-                                                              focusedBorder:
-                                                                  UnderlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                        color: Colors
-                                                                            .blue),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    const Gap(20),
-                                                    Row(
-                                                      children: [
-                                                        const Text(
-                                                          "Select GST:",
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500),
-                                                        ),
-                                                        const Gap(30),
-                                                        Align(
-                                                          alignment:
-                                                              Alignment.topLeft,
-                                                          child: Container(
-                                                            decoration: BoxDecoration(
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade600,
-                                                                    width: 1)),
-                                                            child:
-                                                                DropdownButtonHideUnderline(
+                                                          const Gap(30),
+                                                          Align(
+                                                            alignment:
+                                                                Alignment.topLeft,
+                                                            child: Container(
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: Colors
+                                                                          .grey
+                                                                          .shade600,
+                                                                      width: 1)),
                                                               child:
-                                                                  DropdownButton2<
-                                                                      String>(
-                                                                isExpanded: true,
-                                                                hint: Text(
-                                                                  'Select GST',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize: 14,
-                                                                    color: Theme.of(
+                                                                  DropdownButtonHideUnderline(
+                                                                child:
+                                                                    DropdownButton2<
+                                                                        String>(
+                                                                  isExpanded: true,
+                                                                  hint: Text(
+                                                                    'Select GST',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize: 14,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .hintColor,
+                                                                    ),
+                                                                  ),
+                                                                  items: gstItem
+                                                                      .map((String
+                                                                              item) =>
+                                                                          DropdownMenuItem<
+                                                                              String>(
+                                                                            value:
+                                                                                item,
+                                                                            child:
+                                                                                Text(
+                                                                              item,
+                                                                              style:
+                                                                                  const TextStyle(
+                                                                                fontSize:
+                                                                                    12,
+                                                                              ),
+                                                                            ),
+                                                                          ))
+                                                                      .toList(),
+                                                                  value:
+                                                                      selectedGst,
+                                                                  onChanged:
+                                                                      (String?
+                                                                          value) {
+                                                                    selectedGst =
+                                                                        value;
+                                                                    FocusScope.of(
                                                                             context)
-                                                                        .hintColor,
+                                                                        .unfocus();
+                                                                  },
+                                                                  buttonStyleData:
+                                                                      const ButtonStyleData(
+                                                                    padding: EdgeInsets
+                                                                        .symmetric(
+                                                                            horizontal:
+                                                                                16),
+                                                                    height: 30,
+                                                                    width: 100,
+                                                                  ),
+                                                                  menuItemStyleData:
+                                                                      const MenuItemStyleData(
+                                                                    height: 20,
                                                                   ),
                                                                 ),
-                                                                items: gstItem
-                                                                    .map((String
-                                                                            item) =>
-                                                                        DropdownMenuItem<
-                                                                            String>(
-                                                                          value:
-                                                                              item,
-                                                                          child:
-                                                                              Text(
-                                                                            item,
-                                                                            style:
-                                                                                const TextStyle(
-                                                                              fontSize:
-                                                                                  12,
-                                                                            ),
-                                                                          ),
-                                                                        ))
-                                                                    .toList(),
-                                                                value:
-                                                                    selectedGst,
-                                                                onChanged:
-                                                                    (String?
-                                                                        value) {
-                                                                  selectedGst =
-                                                                      value;
-                                                                  FocusScope.of(
-                                                                          context)
-                                                                      .unfocus();
-                                                                },
-                                                                buttonStyleData:
-                                                                    const ButtonStyleData(
-                                                                  padding: EdgeInsets
-                                                                      .symmetric(
-                                                                          horizontal:
-                                                                              16),
-                                                                  height: 30,
-                                                                  width: 100,
-                                                                ),
-                                                                menuItemStyleData:
-                                                                    const MenuItemStyleData(
-                                                                  height: 20,
-                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
+                                                      const Gap(10),
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                4,
+                                                            child: const Text(
+                                                              "Amount AUD: ",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
+                                                          ),
+                                                          const Gap(10),
+                                                          SizedBox(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.5,
+                                                            child: Text(
+                                                              "${int.parse(contacts[selectedIndex].quantity) * int.parse(contacts[selectedIndex].unitPrice)}",
+                                                              style: const TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 10),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.spaceEvenly,
+                                                  children: [
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        //
+                                                        String description =
+                                                            descriptionController
+                                                                .text
+                                                                .trim();
+                                                        String quantity =
+                                                            quantityController.text
+                                                                .trim();
+                                                        String unitPrice =
+                                                            unitPriceController.text
+                                                                .trim();
+                                                        String selectedItem =
+                                                            selectedValue!;
+                                                        String selectedGstItem =
+                                                            selectedGst!;
+                                                        int totalAud = int.parse(
+                                                                quantity) *
+                                                            int.parse(unitPrice);
+                                                        if (description
+                                                                .isNotEmpty &&
+                                                            quantity.isNotEmpty &&
+                                                            selectedItem
+                                                                .isNotEmpty &&
+                                                            unitPrice.isNotEmpty &&
+                                                            selectedGst!
+                                                                .isNotEmpty &&
+                                                            selectedItem!
+                                                                .isNotEmpty) {
+                                                          setState(() {
+                                                            descriptionController
+                                                                .text = '';
+                                                            quantityController
+                                                                .text = '';
+                                                            unitPriceController
+                                                                .text = '';
+                                                            contacts.add(ItemsInfo(
+                                                                item: selectedItem,
+                                                                description:
+                                                                    description,
+                                                                quantity: quantity,
+                                                                unitPrice:
+                                                                    unitPrice,
+                                                                gst:
+                                                                    selectedGstItem,
+                                                                TAUD: totalAud));
+                                                          });
+                                                        }
+                                                        Navigator.of(context).pop();
+                                                        //
+                                                      },
+                                                      style: ButtonStyle(
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(Colors
+                                                                    .blue
+                                                                    .shade600), // Set the button's background color
+                                                      ),
+                                                      child: const Text('Save',
+                                                          style: TextStyle(
+                                                              color: Colors.white)),
                                                     ),
-                                                    const Gap(10),
-                                                    Row(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              4,
-                                                          child: const Text(
-                                                            "Amount AUD: ",
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                          ),
-                                                        ),
-                                                        const Gap(10),
-                                                        SizedBox(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width /
-                                                              3.5,
-                                                          child: Text(
-                                                            "${int.parse(contacts[selectedIndex].quantity) * int.parse(contacts[selectedIndex].unitPrice)}",
-                                                            style: const TextStyle(
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        //
+                                                        String item =
+                                                            selectedValue!.trim();
+                                                        String description =
+                                                            descriptionController
+                                                                .text
+                                                                .trim();
+                                                        String quantity =
+                                                            quantityController.text
+                                                                .trim();
+                                                        String unitPrice =
+                                                            unitPriceController.text
+                                                                .trim();
+                                                        int totalAud = int.parse(
+                                                                contacts[
+                                                                        selectedIndex]
+                                                                    .quantity) *
+                                                            int.parse(contacts[
+                                                                    selectedIndex]
+                                                                .unitPrice);
+                                                        String gst =
+                                                            selectedGst!.trim();
+                                                        if (description
+                                                                .isNotEmpty &&
+                                                            quantity.isNotEmpty &&
+                                                            unitPrice.isNotEmpty) {
+                                                          setState(() {
+                                                            descriptionController
+                                                                .text = '';
+                                                            quantityController
+                                                                .text = '';
+                                                            unitPriceController
+                                                                .text = '';
+
+                                                            contacts[selectedIndex]
+                                                                .item = item;
+                                                            contacts[selectedIndex]
+                                                                    .description =
+                                                                description;
+                                                            contacts[selectedIndex]
+                                                                    .quantity =
+                                                                quantity;
+                                                            contacts[selectedIndex]
+                                                                    .unitPrice =
+                                                                unitPrice;
+                                                            contacts[selectedIndex]
+                                                                .gst = gst;
+                                                            contacts[selectedIndex]
+                                                                .TAUD = int.parse(
+                                                                    quantity) *
+                                                                int.parse(
+                                                                    unitPrice);
+                                                            selectedIndex = -1;
+                                                          });
+                                                        }
+                                                        Navigator.of(context).pop();
+                                                        //
+                                                      },
+                                                      style: ButtonStyle(
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(Colors
+                                                                    .blue
+                                                                    .shade600), // Set the button's background color
+                                                      ),
+                                                      child: const Text('Update',
+                                                          style: TextStyle(
+                                                              color: Colors.white)),
                                                     ),
                                                   ],
                                                 ),
-                                              ),
-                                              const SizedBox(height: 10),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  ElevatedButton(
-                                                    onPressed: () {
-                                                      //
-                                                      String description =
-                                                          descriptionController
-                                                              .text
-                                                              .trim();
-                                                      String quantity =
-                                                          quantityController.text
-                                                              .trim();
-                                                      String unitPrice =
-                                                          unitPriceController.text
-                                                              .trim();
-                                                      String selectedItem =
-                                                          selectedValue!;
-                                                      String selectedGstItem =
-                                                          selectedGst!;
-                                                      int totalAud = int.parse(
-                                                              quantity) *
-                                                          int.parse(unitPrice);
-                                                      if (description
-                                                              .isNotEmpty &&
-                                                          quantity.isNotEmpty &&
-                                                          selectedItem
-                                                              .isNotEmpty &&
-                                                          unitPrice.isNotEmpty &&
-                                                          selectedGst!
-                                                              .isNotEmpty &&
-                                                          selectedItem!
-                                                              .isNotEmpty) {
-                                                        setState(() {
-                                                          descriptionController
-                                                              .text = '';
-                                                          quantityController
-                                                              .text = '';
-                                                          unitPriceController
-                                                              .text = '';
-                                                          contacts.add(ItemsInfo(
-                                                              item: selectedItem,
-                                                              description:
-                                                                  description,
-                                                              quantity: quantity,
-                                                              unitPrice:
-                                                                  unitPrice,
-                                                              gst:
-                                                                  selectedGstItem,
-                                                              TAUD: totalAud));
-                                                        });
-                                                      }
-                                                      Navigator.of(context).pop();
-                                                      //
-                                                    },
-                                                    style: ButtonStyle(
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all<Color>(Colors
-                                                                  .blue
-                                                                  .shade600), // Set the button's background color
-                                                    ),
-                                                    child: const Text('Save',
-                                                        style: TextStyle(
-                                                            color: Colors.white)),
-                                                  ),
-                                                  ElevatedButton(
-                                                    onPressed: () {
-                                                      //
-                                                      String item =
-                                                          selectedValue!.trim();
-                                                      String description =
-                                                          descriptionController
-                                                              .text
-                                                              .trim();
-                                                      String quantity =
-                                                          quantityController.text
-                                                              .trim();
-                                                      String unitPrice =
-                                                          unitPriceController.text
-                                                              .trim();
-                                                      int totalAud = int.parse(
-                                                              contacts[
-                                                                      selectedIndex]
-                                                                  .quantity) *
-                                                          int.parse(contacts[
-                                                                  selectedIndex]
-                                                              .unitPrice);
-                                                      String gst =
-                                                          selectedGst!.trim();
-                                                      if (description
-                                                              .isNotEmpty &&
-                                                          quantity.isNotEmpty &&
-                                                          unitPrice.isNotEmpty) {
-                                                        setState(() {
-                                                          descriptionController
-                                                              .text = '';
-                                                          quantityController
-                                                              .text = '';
-                                                          unitPriceController
-                                                              .text = '';
-
-                                                          contacts[selectedIndex]
-                                                              .item = item;
-                                                          contacts[selectedIndex]
-                                                                  .description =
-                                                              description;
-                                                          contacts[selectedIndex]
-                                                                  .quantity =
-                                                              quantity;
-                                                          contacts[selectedIndex]
-                                                                  .unitPrice =
-                                                              unitPrice;
-                                                          contacts[selectedIndex]
-                                                              .gst = gst;
-                                                          contacts[selectedIndex]
-                                                              .TAUD = int.parse(
-                                                                  quantity) *
-                                                              int.parse(
-                                                                  unitPrice);
-                                                          selectedIndex = -1;
-                                                        });
-                                                      }
-                                                      Navigator.of(context).pop();
-                                                      //
-                                                    },
-                                                    style: ButtonStyle(
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all<Color>(Colors
-                                                                  .blue
-                                                                  .shade600), // Set the button's background color
-                                                    ),
-                                                    child: const Text('Update',
-                                                        style: TextStyle(
-                                                            color: Colors.white)),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                                selectedValue = contacts[index].item;
-                                descriptionController.text =
-                                    contacts[index].description;
-                                quantityController.text =
-                                    contacts[index].quantity;
-                                unitPriceController.text =
-                                    contacts[index].unitPrice;
-                                selectedGst = contacts[index].gst;
-                                setState(() {
-                                  selectedIndex = index;
-                                });
-                                //
-                              },
-                              child: const Icon(Icons.edit)),
+                                      );
+                                    },
+                                  );
+                                  selectedValue = contacts[index].item;
+                                  descriptionController.text =
+                                      contacts[index].description;
+                                  quantityController.text =
+                                      contacts[index].quantity;
+                                  unitPriceController.text =
+                                      contacts[index].unitPrice;
+                                  selectedGst = contacts[index].gst;
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                  //
+                                },
+                                child: const Icon(Icons.edit)),
+                          ),
                         ),
                       ),
-                    ),
-                    const Gap(5),
-                    Container(
-                      height: 35,
-                      width: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: InkWell(
-                              onTap: (() {
-                                setState(() {
-                                  contacts.removeAt(index);
-                                });
-                              }),
-                              child: const Icon(Icons.delete)),
+                      const Gap(5),
+                      Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: InkWell(
+                                onTap: (() {
+                                  setState(() {
+                                    contacts.removeAt(index);
+                                  });
+                                }),
+                                child: const Icon(Icons.delete)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );

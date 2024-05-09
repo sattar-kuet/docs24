@@ -852,12 +852,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                         TAUD: totalAud));
                                                   });
                                                 }
-                                                if(selectedValue=="" || descriptionController.text=="" || quantityController==""
-                                                || unitPriceController.text=="" || selectedGst==""){
-                                                  print("object");
-                                                } else{
-                                                  Navigator.of(context).pop();
-                                                }
+                                                Navigator.of(context).pop();
                                                 //
                                               },
                                               style: ButtonStyle(

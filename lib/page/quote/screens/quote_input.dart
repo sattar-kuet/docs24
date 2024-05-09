@@ -1306,7 +1306,18 @@ class _QuoteInputState extends State<QuoteInput> {
                     const Gap(30),
                 ElevatedButton(
                   onPressed: () {
+                    setState(() {
+                      if(descriptionController.text.isNotEmpty && descriptionController.text.isNotEmpty && quantityController.text.isNotEmpty && selectedGst!.isNotEmpty && selectedValue!.isNotEmpty) {
+                        selectedValue = '';
+                        selectedGst = '';
+                        descriptionController.text = '';
+                        quantityController.text = '';
+                        unitPriceController.text = '';
+                      }
+                    });
+
                     showDialog(
+                      barrierDismissible: false,
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
@@ -1503,7 +1514,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                   child: DropdownButton2<String>(
                                                     isExpanded: true,
                                                     hint: Text(
-                                                      'gst',
+                                                      'Select Item',
                                                       style: TextStyle(
                                                         fontSize: 14,
                                                         color: Theme.of(context).hintColor,
@@ -1616,6 +1627,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                 contacts[selectedIndex].quantity = quantity;
                                                 contacts[selectedIndex].unitPrice=unitPrice;
                                                 contacts[selectedIndex].gst=gst;
+                                                contacts[selectedIndex].TAUD=int.parse(quantity)*int.parse(unitPrice);
                                                 selectedIndex = -1;
 
                                               });
@@ -1900,6 +1912,7 @@ class _QuoteInputState extends State<QuoteInput> {
                       //
                       showDialog(
                         context: context,
+                        barrierDismissible: false,
                         builder: (BuildContext context) {
                           return AlertDialog(
                             shape: RoundedRectangleBorder(
@@ -2209,7 +2222,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                 contacts[selectedIndex].quantity = quantity;
                                                 contacts[selectedIndex].unitPrice=unitPrice;
                                                 contacts[selectedIndex].gst=gst;
-                                                contacts[selectedIndex].TAUD=totalAud;
+                                                contacts[selectedIndex].TAUD=int.parse(quantity)*int.parse(unitPrice);
                                                 selectedIndex = -1;
 
                                               });

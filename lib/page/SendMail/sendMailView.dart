@@ -205,7 +205,6 @@ class _SendMailViewState extends State<SendMailView> {
 
                           if ( stateAction.selectedMailTemplateCode ==
                               "quote") ...[
-
                             GestureDetector(
                               onTap: (){
                                 Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const QuoteInput()));

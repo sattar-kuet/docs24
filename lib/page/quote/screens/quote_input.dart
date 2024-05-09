@@ -596,6 +596,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                                 .width /
                                                             3.5,
                                                     child: TextField(
+                                                      keyboardType: TextInputType.phone,
                                                       cursorColor: Colors.blue,
                                                       controller:
                                                           quantityController,
@@ -655,6 +656,7 @@ class _QuoteInputState extends State<QuoteInput> {
                                                                 .width /
                                                             3.5,
                                                     child: TextField(
+                                                      keyboardType: TextInputType.phone,
                                                       cursorColor: Colors.blue,
                                                       controller:
                                                           unitPriceController,
@@ -811,7 +813,6 @@ class _QuoteInputState extends State<QuoteInput> {
                                           children: [
                                             ElevatedButton(
                                               onPressed: () {
-                                                //
                                                 String description =
                                                     descriptionController.text
                                                         .trim();
@@ -851,7 +852,12 @@ class _QuoteInputState extends State<QuoteInput> {
                                                         TAUD: totalAud));
                                                   });
                                                 }
-                                                Navigator.of(context).pop();
+                                                if(selectedValue=="" || descriptionController.text=="" || quantityController==""
+                                                || unitPriceController.text=="" || selectedGst==""){
+                                                  print("object");
+                                                } else{
+                                                  Navigator.of(context).pop();
+                                                }
                                                 //
                                               },
                                               style: ButtonStyle(
@@ -1734,10 +1740,15 @@ class _QuoteInputState extends State<QuoteInput> {
 }
 
 final List<String> items = [
-  'Item1',
-  'Item2',
-  'Item3',
-  'Item4',
+  'M2',
+  'Lm',
+  'M3',
+  'Ton',
+  'Kg',
+  'Item',
+  'Box',
+  'Other',
+  'None',
 ];
 String? selectedValue;
 final List<String> gstItem = ['GST', 'Non GST'];
